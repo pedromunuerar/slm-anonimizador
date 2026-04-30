@@ -1,0 +1,114 @@
+[
+    {
+      "id": "JIRA-001",
+      "original": "Hola Carlos, por favor revisa el servidor 192.168.1.45 para el cliente cliente@gmail.com",
+      "esperado": "hola [nombre] por favor revisa el servidor [ip] para el cliente [email]"
+    },
+    {
+      "id": "JIRA-002",
+      "original": "Urgente: El usuario Ana Gómez dice que la web https://miempresa.com da error 500.",
+      "esperado": "urgente el usuario [nombre] dice que la web [url] da error 500"
+    },
+    {
+      "id": "JIRA-003",
+      "original": "El profesor Juan Pérez no puede acceder a la plataforma de nóminas en https://universidad.edu.",
+      "esperado": "el profesor [nombre] no puede acceder a la plataforma de nominas en [url]"
+    },
+    {
+      "id": "JIRA-004",
+      "original": "Soporte RRHH: Alta en el sistema para la nueva empleada Laura Martín (laura.martin@rrhh-uni.es).",
+      "esperado": "soporte rrhh alta en el sistema para la nueva empleada [nombre] [email]"
+    },
+    {
+      "id": "JIRA-005",
+      "original": "Error en el aplicativo de contabilidad al conectar con la base de datos en la IP 10.100.1.25.",
+      "esperado": "error en el aplicativo de contabilidad al conectar con la base de datos en la ip [ip]"
+    },
+    {
+      "id": "JIRA-006",
+      "original": "La jefa de contabilidad Carmen Ortiz solicita restaurar el backup del servidor 192.168.100.4.",
+      "esperado": "la jefa de contabilidad [nombre] solicita restaurar el backup del servidor [ip]"
+    },
+    {
+      "id": "JIRA-007",
+      "original": "Fallo en el portal de autoservicio del empleado en https://app.edu para el usuario Pedro Gómez.",
+      "esperado": "fallo en el portal de autoservicio del empleado en [url] para el usuario [nombre]"
+    },
+    {
+      "id": "JIRA-008",
+      "original": "Problema con la pasarela de pagos de matrícula gestionada por Alberto Sanz en alberto_sanz@pagos.edu.",
+      "esperado": "problema con la pasarela de pagos de matricula gestionada por [nombre] en [email]"
+    },
+    {
+      "id": "JIRA-009",
+      "original": "La auditoría externa nos pide revisar los logs del servidor de facturación 172.16.0.50 urgente.",
+      "esperado": "la auditoria externa nos pide revisar los logs del servidor de facturacion [ip] urgente"
+    },
+    {
+      "id": "JIRA-010",
+      "original": "Consulta de IRPF del profesor Carlos Jiménez enviada erróneamente a sistemas@universidad.edu.",
+      "esperado": "consulta de irpf del profesor [nombre] enviada erroneamente a [email]"
+    },
+    {
+      "id": "JIRA-011",
+      "original": "Revisar permisos en el ERP de gestión para la usuaria de compras María Villalobos.",
+      "esperado": "revisar permisos en el erp de gestion para la usuaria de compras [nombre]"
+    },
+    {
+      "id": "JIRA-012",
+      "original": "Fallo de conexión SSH al servidor de presupuestos en la dirección IP 192.168.50.5.",
+      "esperado": "fallo de conexion ssh al servidor de presupuestos en la direccion ip [ip]"
+    },
+    {
+      "id": "JIRA-013",
+      "original": "El decano Fernando Torres dice que el enlace https://universidad.edu no carga el listado.",
+      "esperado": "el decano [nombre] dice que el enlace [url] no carga el listado"
+    },
+    {
+      "id": "JIRA-014",
+      "original": "Modificar el correo de facturación de la proveedora Elena Fuentes a elena.fuentes@empresa.com.",
+      "esperado": "modificar el correo de facturacion de la proveedora [nombre] a [email]"
+    },
+    {
+      "id": "JIRA-015",
+      "original": "Soporte aplicativo: No se pueden volcar los datos de matriculación del servidor 10.0.0.15.",
+      "esperado": "soporte aplicativo no se pueden volcar los datos de matriculacion del servidor [ip]"
+    },
+    {
+      "id": "JIRA-016",
+      "original": "Actualizar el certificado SSL de la web de gestión de becas en https://universidad.edu.",
+      "esperado": "actualizar el certificado ssl de la web de gestion de becas en [url]"
+    },
+    {
+      "id": "JIRA-017",
+      "original": "Baja en el aplicativo de fichaje horario para el empleado saliente Manuel Domínguez.",
+      "esperado": "baja en el aplicativo de fichaje horario para el empleado saliente [nombre]"
+    },
+    {
+      "id": "JIRA-018",
+      "original": "Error 403 en el gestor documental de RRHH para la técnico de personal Sonia Bravo.",
+      "esperado": "error 403 en el gestor documental de rrhh para la tecnico de personal [nombre]"
+    },
+    {
+      "id": "JIRA-019",
+      "original": "Aviso de caída del servicio de inventario en la máquina virtual con IP 192.168.200.12.",
+      "esperado": "aviso de caida del servicio de inventario en la maquina virtual con ip [ip]"
+    },
+    {
+      "id": "JIRA-020",
+      "original": "Problema con las firmas digitales de los contratos en el portal https://universidad.edu.",
+      "esperado": "problema con las firmas digitales de los contratos en el portal [url]"
+    },
+    {
+      "id": "JIRA-021",
+      "original": "El director financiero Roberto Alcázar no puede generar el cierre de mes en el aplicativo de compras.",
+      "esperado": "el director financiero [nombre] no puede generar el cierre de mes en el aplicativo de compras"
+    },
+    {
+      "id": "JIRA-022",
+      "original": "Añadir la IP 100.50.25.4 a la whitelist del firewall para el servidor de recursos humanos.",
+      "esperado": "añadir la ip [ip] a la whitelist del firewall para el servidor de recursos humanos"
+    }
+  ]
+  
+  

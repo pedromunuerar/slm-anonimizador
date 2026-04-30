@@ -1,0 +1,19 @@
+# Entorno virtual
+venv/
+env/
+.env/
+
+# Python (archivos compilados y caché)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribución / Paquetes
+dist/
+build/
+*.egg-info/
+
+#trazas y salida
+trazas_evaluacion/
+*.csv
+
