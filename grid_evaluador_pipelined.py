@@ -8,6 +8,18 @@ from difflib import SequenceMatcher
 from pydantic import BaseModel, ValidationError
 from ollama import chat, generate
 
+
+# ==========================================
+# 🎛️ CONFIGURACIÓN DE LA MATRIZ DE PRUEBAS
+# ==========================================
+MODELOS_A_PROBAR = ["qwen2.5-coder:7b"]
+TEMPERATURAS = [0.0]
+CONTEXTOS = [4096]
+DATASET_JIRAS = "dataset_jiras.json"
+ARCHIVO_RESULTADOS = "resultados_evaluacion.csv"
+CARPETA_TRAZAS = "trazas_evaluacion"
+
+
 # ==========================================
 # 🎛️ MODELOS DE DATOS PARA JSON ESTRUCTURADO
 # ==========================================
@@ -212,15 +224,6 @@ def corregir_errores_comunes(texto_procesado, texto_original):
     
     return texto_procesado
 
-# ==========================================
-# 🎛️ CONFIGURACIÓN DE LA MATRIZ DE PRUEBAS
-# ==========================================
-MODELOS_A_PROBAR = ["qwen2.5-coder:7b"]
-TEMPERATURAS = [0.0]
-CONTEXTOS = [4096]
-DATASET_JIRAS = "dataset_jiras.json"
-ARCHIVO_RESULTADOS = "resultados_evaluacion.csv"
-CARPETA_TRAZAS = "trazas_evaluacion"
 
 os.makedirs(CARPETA_TRAZAS, exist_ok=True)
 
@@ -336,6 +339,8 @@ def normalizar_texto_mejorado(texto):
 
     texto = texto.replace(' texto_a_procesar ', '')
     texto = texto.replace(' /texto_a_procesar ', '')
+    texto = texto.replace(' texto_a_procesado ', '')
+    texto = texto.replace(' /texto_a_procesado ', '')
 
     lineas = [linea.strip() for linea in texto.split('\n')]
     texto = '\n'.join(linea for linea in lineas if linea)

@@ -1,0 +1,83 @@
+/* Basic Reset and Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light gray background */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure the body takes up the full screen height */
+    margin: 0;
+}
+
+/* Container for the Login Form */
+.login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    width: 100%;
+    max-width: 400px; /* Limit the width of the form */
+}
+
+/* Header Styling */
+.login-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Styling for Input Groups (Labels and Inputs) */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block; /* Makes the label take up the full width */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+    font-size: 16px;
+}
+
+/* Styling for the Submit Button */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff; /* Blue color for the primary action */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styling for Footer Links */
+.links {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
