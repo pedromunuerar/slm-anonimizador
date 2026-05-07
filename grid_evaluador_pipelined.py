@@ -215,7 +215,7 @@ def corregir_errores_comunes(texto_procesado, texto_original):
 # ==========================================
 # 🎛️ CONFIGURACIÓN DE LA MATRIZ DE PRUEBAS
 # ==========================================
-MODELOS_A_PROBAR = ["qwen2.5-coder:3b"]
+MODELOS_A_PROBAR = ["qwen2.5-coder:7b"]
 TEMPERATURAS = [0.0]
 CONTEXTOS = [4096]
 DATASET_JIRAS = "dataset_jiras.json"
@@ -240,14 +240,14 @@ Si el texto dice "Juan realizó la tarea", debe quedar "[PERSONA] realizó la ta
 Si el texto dice "María tenía un problema", debe quedar "[PERSONA] tenía un problema" (NO "tiene")""",
         "pipeline": None,
         "use_json_format": False,
-        "post_procesar": False
+        "post_procesar": True
     },
     
     "prompt_v2_extractor_preciso": {
         "sistema": """Eres un extractor de datos para enmascaramiento. Tu ÚNICA función es identificar y extraer datos personales del texto.
 
 ANALIZA el texto y extrae SOLO los siguientes tipos de datos:
-- nombres: Nombres completos de personas (Nombre Apellido)
+- nombres: Nombres completos de personas (Nombre Apellido, Apellidos o Nombre Apellidos)
 - emails: Direcciones de correo electrónico completas
 - ips: Direcciones IP (IPv4 o IPv6)
 - urls: URLs completas con protocolo
@@ -255,8 +255,7 @@ ANALIZA el texto y extrae SOLO los siguientes tipos de datos:
 REGLAS DE EXTRACCIÓN:
 1. SOLO EXTRAE DATOS LITERALES: Copia exactamente como aparecen en el texto
 2. NO INTERPRETES: Si no estás 100% seguro, no incluyas el dato
-3. NOMBRES: Solo nombres completos de personas (Nombre Apellido)
-   - NO incluyas: nombres de usuario, empresas, productos, cargos
+3. NOMBRES: Solo nombres completos de personas (Nombre Apellido, Apellidos o Nombre y Apellidos)
 4. EMAILS: Deben contener @ y dominio (ej: usuario@dominio.com)
 5. IPs: Direcciones IP completas (ej: 192.168.1.1)
 6. URLs: Deben incluir protocolo (http:// o https://)
@@ -296,7 +295,7 @@ SUSTITUCIONES EXACTAS:
 
 EJEMPLO:
 Entrada: "Juan Pérez realizó la configuración del servidor 192.168.1.1"
-Salida: "[PERSONA] realizó la configuración del servidor [IP]"
+Salida: "[] realizó la configuración del servidor [IP]"
 (NOTA: "realizó" se mantiene igual, NO se cambia a "realiza")""",
         "pipeline": None,
         "use_json_format": False,
@@ -332,8 +331,12 @@ def normalizar_texto_mejorado(texto):
     
     # Normalizar espacios
     texto = re.sub(r' +', ' ', texto)
-    
-    # Limpiar líneas
+
+    #Eliminar tokens  <texto_a_procesar> </texto_a_procesar>
+
+    texto = texto.replace(' texto_a_procesar ', '')
+    texto = texto.replace(' /texto_a_procesar ', '')
+
     lineas = [linea.strip() for linea in texto.split('\n')]
     texto = '\n'.join(linea for linea in lineas if linea)
     
