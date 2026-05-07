@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MySecureApp</title>
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --input-bg: #1e293b;
+            --input-border: #475569;
+            --accent-color: #00f2ea;
+            --loading-color: #ff0050;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+
+        /* --- Login Container --- */
+        .login-box {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .login-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- Logo Area --- */
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .logo p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* --- Form Elements --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            padding-left: 35px;
+            border-radius: 8px;
+            border: 1px solid var(--input-border);
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            transition: 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+        }
+
+        /* --- Social Buttons --- */
+        .social-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .btn-social {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--input-bg);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-social:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: var(--accent-color);
+            color: var(--bg-color);
+            transform: scale(1.1);
+        }
+
+        /* --- Submit Button --- */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            outline: none;
+        }
+
+        .login-btn:hover {
+            background-color: #5649c0;
+        }
+
+        .login-btn:disabled {
+            background-color: #646c7e;
+            cursor: not-allowed;
+        }
+
+        /* --- Loading Spinner --- */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--loading-color);
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Footer --- */
+        .footer-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--input-border);
+        }
+        .footer-link a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <div class="logo">
+            <h1>MySecureApp</h1>
+            <p>Secure Access for all</p>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="name@company.com">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="••••••••">
+            </div>
+
+            <button type="submit" class="login-btn">Sign In</button>
+            
+            <div class="social-buttons">
+                <button type="button" class="btn-social" onclick="toggleSocialButton()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-6 2.7L3 
+8"/><path d="M7 11l5 5 4-4"/><path d="M3 5v14"/><path d="m21 12-9-9"/></svg>
+                    Google
+                </button>
+                <button type="button" class="btn-social" onclick="toggleSocialButton()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" 
+rx="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    Apple
+                </button>
+            </div>
+
+            <p class="footer-link">Don't have an account? <a href="#">Sign Up</a></p>
+        </form>
+
+        <!-- Loading Overlay -->
+        <div id="loader" class="spinner"></div>
+    </div>
+
+    <script>
+        // --- JS Logic ---
+
+        // 1. Toggle Social Login Button
+        function toggleSocialButton() {
+            const btn = document.querySelector('.btn-social');
+            const originalText = btn.innerHTML;
+            
+            if(btn.innerHTML === 'Google') {
+                btn.innerHTML = 'Apple';
+                btn.style.backgroundColor = '#0071e3'; // Apple color
+                btn.style.color = 'white';
+            } else {
+                btn.innerHTML = 'Google';
+                btn.style.backgroundColor = '#d1d5db'; // Google color
+                btn.style.color = '#000';
+            }
+        }
+
+        // 2. Simple Form Handling Function
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent page reload
+            
+            const btn = document.querySelector('.login-btn');
+            const spinner = document.getElementById('loader');
+            
+            // Reset UI
+            btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 10 10 12 20 10" /></svg>' + ' ';
+            spinner.style.display = 'inline';
+            spinner.style.animationPlayState = 'running';
+            btn.disabled = true;
+
+            // Simulate Network Request
+            setTimeout(() => {
+                // Success Animation
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12" /></svg>' + ' ';
+                spinner.style.animationPlayState = 'paused';
+                btn.disabled = false;
+                
+                // Success Message
+                alert('Login Successful! Redirecting to dashboard...');
+                // In a real app, you would make a redirect here.
+            }, 1000);
+        }
+
+        // 3. Show/Hide Loader on Form Submit
+        document.getElementById('loginForm').addEventListener('submit', function() {
+            // This is a basic simulation to demonstrate that clicking submit shows the loader
+            this.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

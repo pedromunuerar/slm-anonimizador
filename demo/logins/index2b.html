@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS Reset and Variables */
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #252a34;
+            --text-color: #555;
+            --white: #fff;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --shadow: 0 15px 25px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+
+        /* Overlay to darken the background image */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        /* The Glass Login Card */
+        .login-card {
+            position: relative;
+            z-index: 1;
+            width: 400px;
+            padding: 50px 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px); /* The Frosted Glass Effect */
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header h2 {
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .login-header p {
+            color: var(--text-color);
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Form Elements */
+        .form-box {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .input-group {
+            position: relative;
+            text-align: left;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 15px 15px 50px; /* Padding left for icon */
+            border: 2px solid #eee;
+            border-radius: 10px;
+            outline: none;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(108, 99, 255, 0.2);
+        }
+
+        /* Submit Button */
+        .btn-login {
+            position: relative;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #5650d6;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--text-color);
+            font-size: 0.8rem;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+        .divider span {
+            padding: 0 10px;
+        }
+
+        /* Links */
+        .social-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .social-links i {
+            margin-left: 10px;
+            cursor: pointer;
+            transition: color 0.3s;
+            color: #333; /* Darker color for icons */
+        }
+
+        .social-links i:hover {
+            color: var(--primary-color);
+        }
+
+        .forgot-pass {
+            color: var(--text-color);
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .forgot-pass:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .login-footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .login-footer a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .login-footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-card {
+                width: 90%;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Welcome Back</h2>
+            <p>Please enter your details to sign in.</p>
+        </div>
+        
+        <form class="form-box" id="loginForm">
+            <!-- Email Input -->
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email Address" class="form-control" id="email" required>
+            </div>
+
+            <!-- Password Input -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" class="form-control" id="password" required>
+            </div>
+
+            <button type="submit" class="btn-login">Sign In</button>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="social-links">
+                <p>Or use email for quick login</p>
+                <i class="fas fa-google" title="Google" onclick="loginUsingGoogle()"></i>
+                <i class="fas fa-facebook" title="Facebook" onclick="loginUsingFacebook()"></i>
+            </div>
+
+            <p class="forgot-pass">Forgot your password?</p>
+        </form>
+
+        <div class="login-footer">
+            <p>Don't have an account? <a href="#">Register</a></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop page reload
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const btn = document.querySelector('.btn-login');
+            const originalText = btn.innerText;
+
+            // Simulate loading
+            btn.innerText = "Signing in...";
+            btn.style.opacity = "0.7";
+            btn.style.cursor = "not-allowed";
+
+            // Simulate API call delay
+            setTimeout(() => {
+                alert(`Login Attempt for user: ${email}\n(This is a frontend demo)`);
+                
+                // Reset values
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+                
+                // Reset button
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+                btn.style.cursor = "pointer";
+            }, 1500);
+        });
+
+        // Optional: Simple Google Login Logic (Mock)
+        function loginUsingGoogle() {
+            alert("This is where you would authenticate with Google!");
+        }
+
+        // Optional: Simple Facebook Login Logic (Mock)
+        function loginUsingFacebook() {
+            alert("This is where you would authenticate with Facebook!");
+        }
+    </script>
+
+</body>
+</html>

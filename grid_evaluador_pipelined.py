@@ -12,8 +12,8 @@ from ollama import chat, generate
 # ==========================================
 # 🎛️ CONFIGURACIÓN DE LA MATRIZ DE PRUEBAS
 # ==========================================
-MODELOS_A_PROBAR = ["qwen2.5-coder:7b"]
-TEMPERATURAS = [0.0]
+MODELOS_A_PROBAR = [ "qwen3.5:0.8b" ] #"gemma4:e2b", "qwen2.5-coder:7b"
+TEMPERATURAS = [0.1]
 CONTEXTOS = [4096]
 DATASET_JIRAS = "dataset_jiras.json"
 ARCHIVO_RESULTADOS = "resultados_evaluacion.csv"
@@ -415,7 +415,8 @@ def ejecutar_evaluacion_mejorada():
                                 "top_k": 1,
                                 "top_p": 0.9,
                                 "repeat_penalty": 1.1,
-                                "presence_penalty": 0.1
+                                "presence_penalty": 0.1,
+                                "think" : False
                             }
                             
                             # LLAMADA A OLLAMA CON O SIN ESQUEMA JSON
@@ -434,7 +435,8 @@ def ejecutar_evaluacion_mejorada():
                                         }
                                     ],
                                     format=schema_class.model_json_schema(),
-                                    options=opciones_ollama
+                                    options=opciones_ollama,
+                                    think=False
                                 )
                                 salida_chat_bruta = respuesta.message.content.strip()
                                 
@@ -451,7 +453,7 @@ def ejecutar_evaluacion_mejorada():
                                     model=modelo,
                                     prompt=prompt_usuario,
                                     system=prompt_texto,
-                                    options=opciones_ollama
+                                    options=opciones_ollama,        
                                 )
                                 salida_chat_bruta = respuesta.response.strip()
                             

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro / Login</title>
+    <style>
+        /* Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contenedor Principal (Tarjeta) */
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            overflow: hidden;
+            width: 400px;
+            margin: 20px;
+        }
+
+        /* Encabezado y Botón Principal */
+        .container > div {
+            padding: 60px 50px;
+        }
+
+        .social-container {
+            margin-bottom: 30px;
+        }
+
+        .container h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .container p {
+            color: #777;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .container input {
+            border: 1px solid #ccc;
+            outline: none;
+            padding: 12px 10px;
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: none;
+        }
+
+        .container button {
+            width: 100%;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .container button:hover {
+            opacity: 0.9;
+        }
+
+        /* Sección de Login (Oculta al inicio, aparece con ID=active) */
+        #login-section {
+            display: none; /* Oculto por defecto */
+        }
+
+        /* Iconos */
+        .icon {
+            font-size: 16px;
+            color: #666;
+            margin-right: 10px;
+        }
+
+        /* Redes Sociales */
+        .social-container a {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: inline-block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .social-container a:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Responsive para móviles */
+        @media only screen and (max-width: 450px) {
+            .container {
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sección: Registro -->
+        <div id="register">
+            <h2>Crear Cuenta</h2>
+            <p>Usa tu correo para registrarte en nuestro servicio.</p>
+            <form action="#">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <br><br>
+            <div class="social-container">
+                <a href="#" class="icon">@ Twitter</a>
+                <a href="#" class="icon">@ Facebook</a>
+            </div>
+            <p>¿Ya tienes cuenta? <a href="#" style="color: #007bff;">Inicia sesión</a></p>
+        </div>
+
+        <!-- Sección: Login -->
+        <div id="login-section">
+            <h2>Iniciar Sesión</h2>
+            <p>Ingresa con tu correo electrónico y contraseña.</p>
+            <form action="#">
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <a href="#" style="color: #333; text-decoration: underline; font-size: 13px;">¿Olvidaste tu contraseña?</a>
+                <button type="submit">Entrar</button>
+            </form>
+            <br><br>
+            <div class="social-container">
+                <a href="#" class="icon">@ Google</a>
+            </div>
+            <p><a href="#" style="color: #007bff;">¿No tienes cuenta? Regístrate</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Script simple para cambiar entre Login y Registro al hacer scroll
+        const scrollBtn = document.querySelector('#register');
+        const scrollSection = document.querySelector('#login-section');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                scrollBtn.style.display = 'none';
+                scrollSection.style.display = 'block';
+            } else {
+                scrollBtn.style.display = 'block';
+                scrollSection.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

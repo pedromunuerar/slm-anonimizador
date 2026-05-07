@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Modern UI</title>
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            /* Branding */
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            
+            /* Inputs */
+            --input-bg: #ffffff;
+            --input-border: #e5e7eb;
+            --input-focus: #2563eb;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-body);
+        }
+
+        /* Main Container */
+        .login-container {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 420px;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        /* Typography */
+        .login-container h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .login-container p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--input-focus);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Links */
+        .login-container a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.75rem;
+            text-decoration: none;
+            color: var(--primary);
+            background: none;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s;
+        }
+
+        .login-container a:hover {
+            background-color: #f0f9ff;
+        }
+
+        .login-container a.primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .login-container a.primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Footer */
+        .login-container p {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Tweaks */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1.75rem;
+                margin: 1rem;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <!-- Logo / Branding -->
+        <div style="text-align: center; margin-bottom: 2rem; color: var(--primary); font-weight: 700;">
+            <span style="font-size: 2rem; font-weight: 800;">🔐</span>
+        </div>
+
+        <!-- Login Header -->
+        <h2>Welcome Back</h2>
+        <p>Enter your credentials to access your account.</p>
+
+        <!-- Form Group 1 -->
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+
+        <!-- Form Group 2 -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+
+        <!-- Action Button -->
+        <button type="submit" class="primary" style="width: 100%;">Log In</button>
+
+        <!-- Divider -->
+        <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+            Don't have an account? <a href="#">Sign Up</a>
+        </p>
+
+        <!-- Footer -->
+        <p class="copyright">© 2024 SecureUI Inc. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
